@@ -19,7 +19,7 @@ export const getGames = async (req: Request, res: Response) => {
 
     // Fetch full details for the top 5 trending games to get real descriptions for the carousel
     const trending = await Promise.all(
-      trendingRaw.slice(0, 5).map(g => fetchGameDetails(g.id))
+      trendingRaw.slice(0, 5).map((g: any) => fetchGameDetails(g.id))
     ).then(details => {
       const validDetails = details.filter(d => d !== null) as any[];
       // Mix them back with the remaining raw ones to keep the list size

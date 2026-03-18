@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { env } from '../config/env';
 
-const NEWS_API_KEY = process.env.NEWS_API_KEY;
+const NEWS_API_KEY = env.NEWS_API_KEY;
 const fallbackNews = [
   {
     id: 'fallback-1',
@@ -20,7 +21,27 @@ const fallbackNews = [
   }
 ];
 
-export const fetchGamingNews = async () => {
+interface NewsArticle {
+  title: string;
+  url: string;
+  publishedAt: string;
+  description: string;
+  content: string;
+  source: { name: string };
+  urlToImage: string;
+}
+
+interface NewsItem {
+  id: string;
+  title: string;
+  link: string;
+  pubDate: string;
+  contentSnippet: string;
+  source: string;
+  image?: string;
+}
+
+export const fetchGamingNews = async (): Promise<NewsItem[]> => {
   try {
     if (!NEWS_API_KEY) throw new Error('News API key missing');
 
@@ -45,7 +66,7 @@ export const fetchGamingNews = async () => {
     });
 
     const items = response.data.articles
-      .map((article: any, idx: number) => ({
+      .map((article: NewsArticle, idx: number): NewsItem => ({
         id: article.url || String(idx),
         title: article.title || 'Untitled update',
         link: article.url || '#',
@@ -54,8 +75,8 @@ export const fetchGamingNews = async () => {
         source: article.source?.name || 'Gaming News',
         image: article.urlToImage
       }))
-      .filter((item: any) => {
-        const text = `${item.title} ${item.content_snippet}`.toLowerCase();
+      .filter((item: NewsItem) => {
+        const text = `${item.title} ${item.contentSnippet}`.toLowerCase();
         
         // Post-fetch filter: must contain gaming keywords
         const matchesGaming = keywords.some(k => text.includes(k.toLowerCase()));

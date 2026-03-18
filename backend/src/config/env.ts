@@ -14,7 +14,9 @@ const envSchema = z.object({
   JWT_EXPIRES_IN: z.string().default('7d'),
   CLIENT_URL: z.string().url().default('http://localhost:3000'),
   GROQ_API_KEY: z.string().optional().transform((value) => value?.trim() || undefined),
-  GROQ_MODEL: z.string().default('llama-3.3-70b-versatile')
+  GROQ_MODEL: z.string().default('llama-3.3-70b-versatile'),
+  RAWG_API_KEY: z.string().min(1),
+  NEWS_API_KEY: z.string().min(1)
 });
 
 export const env = envSchema.parse({

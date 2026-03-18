@@ -4,6 +4,7 @@ const AUTH_TOKEN_KEY = 'nexus_auth_token';
 const RUNTIME_CONFIG_KEY = 'nexus_runtime_config';
 const RUNTIME_CONFIG_PATH = '/nexus-runtime.json';
 
+const isDev = process.env.NODE_ENV === 'development';
 const defaultApiBaseUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api').replace(/\/+$/, '');
 const defaultSocketUrl = (process.env.NEXT_PUBLIC_SOCKET_URL || defaultApiBaseUrl.replace(/\/api$/, '')).replace(/\/+$/, '');
 
@@ -61,7 +62,7 @@ const storeRuntimeConfig = (config: RuntimeConfig) => {
 };
 
 export const resolveRuntimeConfig = async (forceRefresh = false): Promise<RuntimeConfig> => {
-  if (typeof window === 'undefined') {
+  if (typeof window === 'undefined' || !isDev) {
     return getDefaultRuntimeConfig();
   }
 

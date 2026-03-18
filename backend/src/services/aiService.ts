@@ -1,6 +1,6 @@
 import OpenAI from 'openai';
 import { env } from '../config/env';
-import { fetchGames, fetchGameDetails } from './gameData';
+import { fetchGames, fetchGameDetails, Game } from './gameData';
 
 const client = env.GROQ_API_KEY
   ? new OpenAI({
@@ -27,7 +27,7 @@ const parseJsonArray = (text: string) => {
   }
 };
 
-const getRecommendationsFromGames = (mood: string, games: any[], preferences: string[] = []) => {
+const getRecommendationsFromGames = (mood: string, games: Game[], preferences: string[] = []) => {
   const moodText = `${mood} ${preferences.join(' ')}`.toLowerCase();
 
   const scored = games.map((game) => {
@@ -100,7 +100,7 @@ export const recommendGames = async (mood: string, preferences: string[] = []) =
     return getRecommendationsFromGames(mood, games, preferences);
   }
 
-  const catalog = games.map((g: any) => `${g.title} | ${g.genre.join(', ')} | rating:${g.rating}`).join('\n');
+  const catalog = games.map((g: Game) => `${g.title} | ${g.genre.join(', ')} | rating:${g.rating}`).join('\n');
   const prompt = `User mood: ${mood}\nPreferences: ${preferences.join(', ') || 'none'}\nGames:\n${catalog}\nReturn strict JSON array: [{"title":"","reason":""}] max 4.`;
 
   try {
@@ -120,8 +120,8 @@ export const recommendGames = async (mood: string, preferences: string[] = []) =
       return getRecommendationsFromGames(mood, games, preferences);
     }
 
-    return parsed.slice(0, 4).map((item: any) => {
-      const match = games.find((g: any) => g.title.toLowerCase() === item.title.toLowerCase());
+    return parsed.slice(0, 4).map((item: { title: string; reason: string }) => {
+      const match = games.find((g: Game) => g.title.toLowerCase() === item.title.toLowerCase());
       return {
         title: match?.title || item.title,
         reason: item.reason,

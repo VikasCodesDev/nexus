@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { env } from '../config/env';
 
-const RAWG_API_KEY = process.env.RAWG_API_KEY;
+const RAWG_API_KEY = env.RAWG_API_KEY;
 const RAWG_BASE_URL = 'https://api.rawg.io/api';
 
 export interface Game {
