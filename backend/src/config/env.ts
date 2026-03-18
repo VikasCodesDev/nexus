@@ -26,5 +26,9 @@ export const env = envSchema.parse({
 
 export const isProduction = env.NODE_ENV === 'production';
 export const allowedOrigins = Array.from(
-  new Set([env.CLIENT_URL, 'http://localhost:3000', 'http://127.0.0.1:3000'])
+  new Set([
+    ...env.CLIENT_URL.split(',').map(url => url.trim().replace(/\/+$/, '')),
+    'http://localhost:3000',
+    'http://127.0.0.1:3000'
+  ])
 );

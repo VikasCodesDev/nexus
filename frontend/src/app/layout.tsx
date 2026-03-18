@@ -3,7 +3,10 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'NEXUS OS',
-  description: 'AI-powered gaming operating system'
+  description: 'AI-powered gaming operating system',
+  icons: {
+    icon: '/favicon.ico.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
