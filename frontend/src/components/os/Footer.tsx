@@ -9,7 +9,7 @@ import { Magnetic } from '@/components/ui/Magnetic';
 
 const socialLinks = [
   { label: 'GitHub', icon: Github, href: 'https://github.com/VikasCodesDev' },
-  { label: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/vikas01/?hl=en#' },
+  { label: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/vikas01_____?igsh=MW1xNTI2bDBndHBtNQ==' },
   { label: 'X', icon: Twitter, href: 'https://x.com/MishraVika46260' },
   { label: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/vikas-mishra0106' },
 ];
