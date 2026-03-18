@@ -1,0 +1,6 @@
+{
+  "port": 5000,
+  "apiBaseUrl": "http://localhost:5000/api",
+  "socketUrl": "http://localhost:5000",
+  "timestamp": "2026-03-18T15:29:38.131Z"
+}
