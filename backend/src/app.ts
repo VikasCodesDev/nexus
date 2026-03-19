@@ -28,21 +28,29 @@ app.use(
 
 const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
-    // Basic allowed origins logic
-    if (
-      !origin || 
+    // Dynamic CORS handling: allows multiple environments seamlessly
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    const isAllowed = 
+      origin === env.CLIENT_URL ||
       allowedOrigins.includes(origin) ||
       origin.endsWith('.vercel.app') || 
       origin.startsWith('http://localhost:') ||
-      origin.startsWith('http://127.0.0.1:')
-    ) {
-      callback(null, true);
-      return;
-    }
+      origin.startsWith('http://127.0.0.1:');
 
-    callback(new Error(`Origin ${origin} is not allowed by CORS`));
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      // Return false instead of throwing an Error so it doesn't crash the request
+      // and clutter Render logs with 500 Internal Server Errors
+      callback(null, false);
+    }
   },
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Cookie']
 };
 
 app.use(

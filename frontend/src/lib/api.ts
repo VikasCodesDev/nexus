@@ -5,7 +5,7 @@ const RUNTIME_CONFIG_KEY = 'nexus_runtime_config';
 const RUNTIME_CONFIG_PATH = '/nexus-runtime.json';
 
 const isDev = process.env.NODE_ENV === 'development';
-const defaultApiBaseUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api').replace(/\/+$/, '');
+const defaultApiBaseUrl = (process.env.NEXT_PUBLIC_API_URL || (isDev ? 'http://localhost:5000/api' : 'https://nexus-backend-twpb.onrender.com/api')).replace(/\/+$/, '');
 const defaultSocketUrl = (process.env.NEXT_PUBLIC_SOCKET_URL || defaultApiBaseUrl.replace(/\/api$/, '')).replace(/\/+$/, '');
 
 type RuntimeConfig = {
