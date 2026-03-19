@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "npm install && tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
     "start": "node dist/server.js"
   },
   "dependencies": {
@@ -22,21 +22,22 @@
     "openai": "^4.56.0",
     "rss-parser": "^3.13.0",
     "socket.io": "^4.7.5",
-    "zod": "^3.23.8"
-  },
-  "devDependencies": {
+    "zod": "^3.23.8",
+    "typescript": "^5.5.4",
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/morgan": "^1.9.9",
-    "@types/node": "^22.5.1",
+    "@types/node": "^22.5.1"
+  },
+  "devDependencies": {
     "esbuild": "^0.27.3",
-    "tsx": "^4.20.6",
-    "typescript": "^5.5.4"
+    "tsx": "^4.20.6"
   },
   "engines": {
     "node": ">=18.0.0"
   }
 }
+
