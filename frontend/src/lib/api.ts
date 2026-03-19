@@ -5,9 +5,27 @@ const RUNTIME_CONFIG_KEY = 'nexus_runtime_config';
 const RUNTIME_CONFIG_PATH = '/nexus-runtime.json';
 
 const isDev = process.env.NODE_ENV === 'development';
-const defaultApiBaseUrl = (process.env.NEXT_PUBLIC_API_URL || (isDev ? 'http://localhost:5000/api' : 'https://nexus-backend-twpb.onrender.com/api')).replace(/\/+$/, '');
-const defaultSocketUrl = (process.env.NEXT_PUBLIC_SOCKET_URL || defaultApiBaseUrl.replace(/\/api$/, '')).replace(/\/+$/, '');
 
+const configuredApiUrl = process.env.NEXT_PUBLIC_API_URL;
+let defaultApiBaseUrl = 'https://nexus-backend-twpb.onrender.com/api';
+
+if (isDev) {
+  defaultApiBaseUrl = configuredApiUrl || 'http://localhost:5000/api';
+} else if (configuredApiUrl && !configuredApiUrl.includes('localhost') && !configuredApiUrl.includes('127.0.0.1')) {
+  // Use Vercel env var ONLY if it's a real web URL, otherwise ignore and use Render default
+  defaultApiBaseUrl = configuredApiUrl;
+}
+defaultApiBaseUrl = defaultApiBaseUrl.replace(/\/+$/, '');
+
+const configuredSocketUrl = process.env.NEXT_PUBLIC_SOCKET_URL;
+let defaultSocketUrl = 'https://nexus-backend-twpb.onrender.com';
+
+if (isDev) {
+  defaultSocketUrl = configuredSocketUrl || defaultApiBaseUrl.replace(/\/api$/, '');
+} else if (configuredSocketUrl && !configuredSocketUrl.includes('localhost') && !configuredSocketUrl.includes('127.0.0.1')) {
+  defaultSocketUrl = configuredSocketUrl;
+}
+defaultSocketUrl = defaultSocketUrl.replace(/\/+$/, '');
 type RuntimeConfig = {
   apiBaseUrl: string;
   socketUrl: string;
