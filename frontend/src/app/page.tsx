@@ -83,9 +83,25 @@ export default function HomePage() {
             <ControllerScene />
           </div>
 
-          <div className='space-y-4 xl:h-full'>
-            {!user && (
-              <div className='glass panel-glow rounded-[1.8rem] p-5'>
+          {/* Right Bottom: Mission Brief OR Login — same slot, same size */}
+          <div className='glass panel-glow rounded-[1.8rem] p-6 h-[184px] flex flex-col justify-center'>
+            {user ? (
+              <>
+                <div className='hud-label mb-3'>Mission Brief</div>
+                <div className='flex items-start justify-between gap-6'>
+                  <div>
+                    <div className='font-heading text-xl uppercase tracking-[0.24em] text-white mb-3'>Gaming OS Online</div>
+                    <p className='text-xs leading-6 text-secondary max-sm:hidden'>
+                      Operational readiness confirmed. Your command deck is optimized for discovery and squad coordination.
+                    </p>
+                  </div>
+                  <div className='flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md'>
+                    <Sparkles className='h-6 w-6 text-white' />
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
                 <div className='hud-label mb-2'>Access Gate</div>
                 <div className='font-heading text-lg uppercase tracking-[0.24em] text-white'>Authenticate</div>
                 <p className='mt-3 text-sm leading-6 text-secondary'>
@@ -96,23 +112,8 @@ export default function HomePage() {
                     Login
                   </Link>
                 </div>
-              </div>
+              </>
             )}
-
-            <div className='glass panel-glow rounded-[1.8rem] p-6 h-[184px] flex flex-col justify-center'>
-              <div className='hud-label mb-3'>Mission Brief</div>
-              <div className='flex items-start justify-between gap-6'>
-                <div>
-                  <div className='font-heading text-xl uppercase tracking-[0.24em] text-white mb-3'>Gaming OS Online</div>
-                  <p className='text-xs leading-6 text-secondary max-sm:hidden'>
-                    Operational readiness confirmed. Your command deck is optimized for discovery and squad coordination.
-                  </p>
-                </div>
-                <div className='flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md'>
-                  <Sparkles className='h-6 w-6 text-white' />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 

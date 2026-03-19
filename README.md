@@ -1,4 +1,4 @@
-# NEXUS — The Next-Gen Gaming OS 🎮🚀
+# NEXUS - The Next Gen Gaming OS 🎮🚀
 
 ![NEXUS Preview](./nexus_preview.png)
 

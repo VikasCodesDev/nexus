@@ -6,7 +6,7 @@ config({ path: path.resolve(process.cwd(), '.env') });
 
 const envSchema = z.object({
   PORT: z.coerce.number().int().positive().default(5000),
-  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+  NODE_ENV: z.enum(['development', 'production', 'test']).default('production'),
   MONGO_URI: z.string().min(1),
   MONGO_FALLBACK_URI: z.string().optional().transform((value) => value?.trim() || undefined),
   MONGO_DNS_SERVERS: z.string().default('8.8.8.8,1.1.1.1'),
@@ -26,9 +26,13 @@ export const env = envSchema.parse({
 
 export const isProduction = env.NODE_ENV === 'production';
 export const allowedOrigins = Array.from(
-  new Set([
-    ...env.CLIENT_URL.split(',').map(url => url.trim().replace(/\/+$/, '')),
-    'http://localhost:3000',
-    'http://127.0.0.1:3000'
-  ])
+  new Set(
+    env.CLIENT_URL.split(',').flatMap((url) => {
+      const cleaned = url.trim().replace(/\/+$/, '');
+      return [cleaned];
+    }).concat([
+      'http://localhost:3000',
+      'http://127.0.0.1:3000'
+    ])
+  )
 );

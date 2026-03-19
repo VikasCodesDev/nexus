@@ -92,16 +92,16 @@ export function SystemBar() {
             </button>
           </Magnetic>
           
-          <Magnetic strength={0.2}>
-            <Link href={user ? '/profile' : '/login'} className='flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 p-1 transition hover:bg-white/10'>
-              <img src={user?.avatar || 'https://api.dicebear.com/9.x/bottts/svg?seed=nexus'} alt='avatar' className='h-8 w-8 rounded-lg border border-white/10 bg-black/40' />
-              <div className='hidden pr-2 text-left sm:block'>
-                <div className='text-[10px] font-bold text-white leading-none uppercase'>{user?.username || 'GUEST'}</div>
-              </div>
-            </Link>
-          </Magnetic>
+            <Magnetic strength={0.2}>
+                <Link href={user ? '/profile' : '/login'} className='flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 p-1 transition hover:bg-white/10'>
+                  <img src={user?.avatar || 'https://api.dicebear.com/9.x/bottts/svg?seed=nexus'} alt='avatar' className='h-8 w-8 rounded-lg border border-white/10 bg-black/40' />
+                  <div className='hidden pr-2 text-left sm:block'>
+                    <div className='text-[10px] font-bold text-white leading-none uppercase'>{user?.username || 'GUEST'}</div>
+                  </div>
+                </Link>
+            </Magnetic>
+          </div>
         </div>
-      </div>
     </header>
   );
 }

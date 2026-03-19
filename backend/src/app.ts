@@ -15,6 +15,11 @@ import { allowedOrigins, env } from './config/env';
 export const app = express();
 app.disable('x-powered-by');
 
+// Bare health probe — no CORS or auth required (used by Render, UptimeRobot, etc.)
+app.get('/health', (_req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 app.use(
   helmet({
     crossOriginResourcePolicy: false
