@@ -1,6 +1,6 @@
 # NEXUS - The Next Gen Gaming OS 🎮🚀
 
-![NEXUS Preview](./nexus_preview.png)
+![NEXUS Preview](./nexusos_preview.png)
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-00d9ff?style=for-the-badge)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge)
