@@ -12,10 +12,13 @@ let defaultApiBaseUrl = 'https://nexus-backend-twpb.onrender.com/api';
 if (isDev) {
   defaultApiBaseUrl = configuredApiUrl || 'http://localhost:5000/api';
 } else if (configuredApiUrl && !configuredApiUrl.includes('localhost') && !configuredApiUrl.includes('127.0.0.1')) {
-  // Use Vercel env var ONLY if it's a real web URL, otherwise ignore and use Render default
   defaultApiBaseUrl = configuredApiUrl;
 }
 defaultApiBaseUrl = defaultApiBaseUrl.replace(/\/+$/, '');
+// Auto-append /api if the user forgot it in their vercel dashboard
+if (!defaultApiBaseUrl.endsWith('/api')) {
+  defaultApiBaseUrl += '/api';
+}
 
 const configuredSocketUrl = process.env.NEXT_PUBLIC_SOCKET_URL;
 let defaultSocketUrl = 'https://nexus-backend-twpb.onrender.com';
