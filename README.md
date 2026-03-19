@@ -27,10 +27,10 @@ Integrating real-time game data, AI-driven recommendations, and a centralized so
 ### 🧠 AI Copilot & Discovery
 NEXUS functions as an intelligent gaming companion:
 
-- 💬 **Copilot Chat** — Real-time tactical advice and system navigation help.
-- 🎯 **Smart Recommendations** — Mood-based game picks powered by Groq LLM.
-- 🔍 **Context Awareness** — AI that understands which module you are currently navigating.
-- ⚙️ **Command Interface** — Futuristic AI command panel for instant interaction.
+- 💬 **Copilot Chat** - Real-time tactical advice and system navigation help.
+- 🎯 **Smart Recommendations** - Mood-based game picks powered by Groq LLM.
+- 🔍 **Context Awareness** - AI that understands which module you are currently navigating.
+- ⚙️ **Command Interface** - Futuristic AI command panel for instant interaction.
 
 ### 📰 News Pulse
 - **Filtered Feed**: Strictly gaming-related news via News API.

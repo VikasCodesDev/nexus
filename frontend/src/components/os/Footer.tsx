@@ -81,7 +81,7 @@ export function Footer() {
 
         {/* Right: Made by */}
         <div className="flex items-center gap-1 text-[10px] text-secondary">
-          Crafted by <span className="animate-pulse text-[12px] drop-shadow-[0_0_8px_rgba(255,20,147,0.8)]">💖</span> <span className="font-medium text-white">Vikas</span>
+          Crafted with <span className="animate-pulse text-[12px] drop-shadow-[0_0_8px_rgba(255,20,147,0.8)]">💖</span> by <span className="font-medium text-white">Vikas</span>
         </div>
       </div>
 
