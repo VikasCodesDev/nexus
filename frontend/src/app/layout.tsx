@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'NEXUS OS',
   description: 'AI-powered gaming operating system',
   icons: {
-    icon: '/favicon.ico.png',
+    icon: '/icon.png',
   },
 };
 

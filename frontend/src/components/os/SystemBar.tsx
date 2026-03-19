@@ -36,7 +36,7 @@ export function SystemBar() {
         <Magnetic strength={0.2}>
           <Link href='/' className='group flex items-center gap-3 transition-transform hover:scale-105'>
             <div className='flex h-10 w-10 items-center justify-center rounded-2xl border border-white/[0.12] bg-white/[0.08] shadow-glow transition group-hover:border-white/30 group-hover:bg-white/20'>
-              <img src="/favicon.ico.png" className='h-7 w-7 object-contain' alt="NEXUS" />
+              <img src="/icon.png" className='h-7 w-7 object-contain' alt="NEXUS" />
             </div>
             <div className='hidden xl:block'>
               <div className='font-heading text-base uppercase tracking-[0.35em] text-white'>NEXUS</div>

@@ -71,7 +71,7 @@ export function HeroCarousel({ games }: { games: Game[] }) {
           <div>
             <div className='hud-label mb-5'>Featured Operative</div>
             
-            <h1 className='font-heading mb-4 text-4xl uppercase tracking-[0.2em] text-white md:text-5xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] line-clamp-2 break-words leading-tight h-[2.4em] flex items-center overflow-hidden'>
+            <h1 className='font-heading mb-4 text-3xl uppercase tracking-[0.2em] text-white md:text-4xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] line-clamp-2 break-words leading-tight h-[2.5em] flex items-center overflow-hidden'>
               {game.title}
             </h1>
 
